@@ -5,7 +5,9 @@ html, body {
   background: #faf8ef;
   color: #776e65;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px; }
+  font-size: 18px; 
+  background: #E0CCCC;
+}
 
 body {
   margin: 80px 0; }
@@ -13,10 +15,9 @@ body {
 .container {
   width: 500px;
   margin: 0 auto; 
-  border: 1px solid #ccc;
 }
 
-.linkXXX{
+.linkURLShortener{
 	background: #f4f4f4;
 	text-decoration: none;
     color: #000;
@@ -40,7 +41,7 @@ body {
     border-radius: 10px;
 }
 
-.linkXXX:hover, .link2048:hover {
+.linkURLShortener:hover, .link2048:hover {
     background: #ccc;
 }
 
@@ -53,8 +54,8 @@ body {
     padding: 0 20px; }
 
      .container {
-    width: 280px;
-    margin: 0 auto; 
-border: 1px solid #ccc;
-}
+	    width: 280px;
+	    margin: 0 auto; 
+	border: 1px solid #ccc;
+	}
 }
