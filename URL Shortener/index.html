@@ -17,6 +17,21 @@
         gapi.client.load('urlshortener', 'v1').then(shortenUrl);
       }
 
+      var shortenUrl = function() {
+        var userLongUrl = getElementById('txtLongUrlInput').value;
+        alert(userLongUrl);
+        var request = gapi.client.urlshortener.url.insert({
+          resource: {
+            longUrl: userLongUrl
+          }
+        });
+        request.execute(function(response) {
+            var shortUrl = response.id;
+            appendResults(response.result.longUrl);
+            console.log('Short URL:', shortUrl);
+        });
+      };
+
       function getLongUrl() {
         gapi.client.setApiKey('AIzaSyAGRJxbLrB60w6bIUpyLBJz9LazibqhEEw');
         gapi.client.load('urlshortener', 'v1').then(LengthenUrl);
@@ -35,19 +50,6 @@
         });
       }
 
-      var shortenUrl = function() {
-        var userLongUrl = getElementById('txtLongUrlInput').value;
-        var request = gapi.client.urlshortener.url.insert({
-          resource: {
-            longUrl: userLongUrl
-          }
-        });
-        request.execute(function(response) {
-            var shortUrl = response.id;
-            appendResults(response.result.longUrl);
-            console.log('Short URL:', shortUrl);
-        });
-      };
 
     </script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
