@@ -26,7 +26,7 @@
         });
         request.execute(function(response) {
             var shortUrl = response.id;
-            appendResults(response.result.longUrl,'shortUrlOutputResult');
+            appendResults(response.result.shortUrl,'shortUrlOutputResult');
             console.log('Short URL:', shortUrl);
         });
       };
@@ -42,10 +42,10 @@
           'shortUrl': userShortUrl
         });
         
-        request.then(function(response) {
-          appendResults(response.result.longUrl,'longUrlOutputResult');
-        }, function(reason) {
-          console.log('Error: ' + reason.result.error.message);
+        request.execute(function(response) {
+            var longUrl = response.id;
+            appendResults(response.result.longUrl,'shortUrlOutputResult');
+            console.log('Long URL:', longUrl);
         });
       }
 
