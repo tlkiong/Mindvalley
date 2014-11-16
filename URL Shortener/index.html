@@ -20,7 +20,7 @@
         var request = gapi.client.urlshortener.url.post({
           'longUrl': 'https://kiong-mindvalley.herokuapp.com/'
         });
-        
+
         request.then(function(response) {
           appendResults(response.result.longUrl);
         }, function(reason) {
@@ -30,8 +30,29 @@
 
       function init() {
         gapi.client.setApiKey('AIzaSyAGRJxbLrB60w6bIUpyLBJz9LazibqhEEw');
-        gapi.client.load('urlshortener', 'v1').then(makeRequest);
+        gapi.client.load('urlshortener', 'v1').then(shortenUrl);
       }
+
+      var shortenUrl = function() {
+      var request = gapi.client.urlshortener.url.insert({
+        resource: {
+          longUrl: 'https://kiong-mindvalley.herokuapp.com/'
+        }
+      });
+      request.execute(function(response) {
+          var shortUrl = response.id;
+          appendResults(response.result.longUrl);
+          console.log('short url:', shortUrl);
+      });
+    };
+
+    var googleApiLoaded = function() {
+      // gapi.client.setApiKey("YOUR API KEY")
+      gapi.client.load("urlshortener", "v1", shortenUrl);
+    };
+
+    window.googleApiLoaded = googleApiLoaded;
+    $(document.body).append('<script src="https://apis.google.com/js/client.js?onload=googleApiLoaded"></script>');
     </script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
   </head>
