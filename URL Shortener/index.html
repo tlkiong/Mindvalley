@@ -13,9 +13,14 @@
       }
 
       function makeRequest() {
-        var request = gapi.client.urlshortener.url.get({
+        /*var request = gapi.client.urlshortener.url.get({
           'shortUrl': 'http://goo.gl/fbsS'
+        });*/
+        
+        var request = gapi.client.urlshortener.url.post({
+          'longUrl': 'https://kiong-mindvalley.herokuapp.com/'
         });
+        
         request.then(function(response) {
           appendResults(response.result.longUrl);
         }, function(reason) {
