@@ -1,8 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #faf8ef;
-  color: #776e65;
+  color: #000;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px; 
   background: #E0CCCC;
@@ -14,7 +13,25 @@ body {
 .container{
   width: 50%;
   margin: 0 auto; 
+  padding: 10px;
 }
+
+.backToHome {
+    background: #f4f4f4;
+    text-decoration: none;
+    color: #000;
+    width: 10%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .backToHome:hover {
+    background: #B28080;
+}
+
 
 .container-longUrl {
   width: 100%;
