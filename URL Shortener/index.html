@@ -18,8 +18,7 @@
       }
 
       var shortenUrl = function() {
-        var userLongUrl = getElementById('txtLongUrlInput').value;
-        alert(userLongUrl);
+        var userLongUrl = document.getElementById('txtLongUrlInput').value;
         var request = gapi.client.urlshortener.url.insert({
           resource: {
             longUrl: userLongUrl
@@ -38,7 +37,7 @@
       }
 
       function LengthenUrl() {
-        var userShortUrl = getElementById('txtShortUrlInput').value;
+        var userShortUrl = document.getElementById('txtShortUrlInput').value;
         var request = gapi.client.urlshortener.url.get({
           'shortUrl': userShortUrl
         });
