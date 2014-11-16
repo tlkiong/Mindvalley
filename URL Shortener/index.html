@@ -6,8 +6,8 @@
   
 
     <script>
-      function appendResults(text) {
-        var results = document.getElementById('shortUrl');
+      function appendShortURLOutputResults(text, element) {
+        var results = document.getElementById(element);
         results.appendChild(document.createElement('P'));
         results.appendChild(document.createTextNode(text));
       }
@@ -26,7 +26,7 @@
         });
         request.execute(function(response) {
             var shortUrl = response.id;
-            appendResults(response.result.longUrl);
+            appendResults(response.result.longUrl,'shortUrlOutputResult');
             console.log('Short URL:', shortUrl);
         });
       };
@@ -43,7 +43,7 @@
         });
         
         request.then(function(response) {
-          appendResults(response.result.longUrl);
+          appendResults(response.result.longUrl,'longUrlOutputResult');
         }, function(reason) {
           console.log('Error: ' + reason.result.error.message);
         });
@@ -63,7 +63,7 @@
         </div>
         <div id="shortUrlOutput">
           <strong id="lblShortUrlOutput">Your Shorten URL: </strong>
-          <div id="shortUrlOutput"></div>
+          <div id="shortUrlOutputResult"></div>
         </div>
       </div>
       <br>
@@ -75,7 +75,7 @@
         </div>
         <div id="longUrlOutput">
           <strong id="lblLongUrlOutput">The original URL: </strong>
-          <div id="longUrlOutput"></div>
+          <div id="longUrlOutputResult"></div>
         </div>
       </div>
     </div>
