@@ -7,20 +7,27 @@
 
     <script>
       function appendResults(text) {
-        var results = document.getElementById('results');
+        var results = document.getElementById('shortUrl');
         results.appendChild(document.createElement('P'));
         results.appendChild(document.createTextNode(text));
       }
 
-      function makeRequest() {
-        /*var request = gapi.client.urlshortener.url.get({
-          'shortUrl': 'http://goo.gl/fbsS'
-        });*/
-        
-        var request = gapi.client.urlshortener.url.post({
-          'longUrl': 'https://kiong-mindvalley.herokuapp.com/'
-        });
+      function makeURLShort() {
+        gapi.client.setApiKey('AIzaSyAGRJxbLrB60w6bIUpyLBJz9LazibqhEEw');
+        gapi.client.load('urlshortener', 'v1').then(shortenUrl);
+      }
 
+      function getLongUrl() {
+        gapi.client.setApiKey('AIzaSyAGRJxbLrB60w6bIUpyLBJz9LazibqhEEw');
+        gapi.client.load('urlshortener', 'v1').then(LengthenUrl);
+      }
+
+      function LengthenUrl() {
+        var userShortUrl = getElementById('txtShortUrlInput').value;
+        var request = gapi.client.urlshortener.url.get({
+          'shortUrl': userShortUrl
+        });
+        
         request.then(function(response) {
           appendResults(response.result.longUrl);
         }, function(reason) {
@@ -28,34 +35,51 @@
         });
       }
 
-      function init() {
-        gapi.client.setApiKey('AIzaSyAGRJxbLrB60w6bIUpyLBJz9LazibqhEEw');
-        gapi.client.load('urlshortener', 'v1').then(shortenUrl);
-      }
-
       var shortenUrl = function() {
-      var request = gapi.client.urlshortener.url.insert({
-        resource: {
-          longUrl: 'https://kiong-mindvalley.herokuapp.com/'
-        }
-      });
-      request.execute(function(response) {
-          var shortUrl = response.id;
-          appendResults(response.result.longUrl);
-          console.log('short url:', shortUrl);
-      });
-    };
+        var userLongUrl = getElementById('txtLongUrlInput').value;
+        var request = gapi.client.urlshortener.url.insert({
+          resource: {
+            longUrl: userLongUrl
+          }
+        });
+        request.execute(function(response) {
+            var shortUrl = response.id;
+            appendResults(response.result.longUrl);
+            console.log('Short URL:', shortUrl);
+        });
+      };
 
-    var googleApiLoaded = function() {
-      // gapi.client.setApiKey("YOUR API KEY")
-      gapi.client.load("urlshortener", "v1", shortenUrl);
-    };
-
-    window.googleApiLoaded = googleApiLoaded;
     </script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
   </head>
   <body>
-    <div id="results"></div>
+    <div class="container">
+      <div class="container-longUrl">
+        <div id="longUrlInput">
+          <strong id="lblLongUrlInput">Input the full length URL Here: </strong>
+          <input type="text" id="txtLongUrlInput" placeholder="eg:http://www.google.com">
+          <button type="btnLongUrl" onclick="makeURLShort()">Shorten URL</button>
+        </div>
+        <div id="shortUrlOutput">
+          <strong id="lblShortUrlOutput">Your Shorten URL: </strong>
+          <div id="shortUrlOutput"></div>
+        </div>
+      </div>
+      <br>
+      <div class="container-shortUrl">
+        <div id="shortUrlInput">
+          <strong id="lblShortUrlInput">Input the short URL Here: </strong>
+          <input type="text" id="txtShortUrlInput" placeholder="eg:http://goo.gl/fbsS">
+          <button type="btnShortUrl" onclick="getLongUrl()">Get Original URL</button>
+        </div>
+        <div id="longUrlOutput">
+          <strong id="lblLongUrlOutput">The original URL: </strong>
+          <div id="longUrlOutput"></div>
+        </div>
+      </div>
+    </div>
+
+    
+
   </body>
 </html>
