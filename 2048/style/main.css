@@ -724,6 +724,6 @@ hr {
   .game-message .lower {
     margin-top: 30px !important; } }
 
-p#created-by{
+p.created-by{
   text-align: center;
 }
