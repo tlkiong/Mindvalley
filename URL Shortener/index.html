@@ -41,14 +41,14 @@
         var request = gapi.client.urlshortener.url.get({
           'shortUrl': userShortUrl
         });
-        
-        request.execute(function(response) {
-            var longUrl = response.id;
-            appendResults(longUrl,'shortUrlOutputResult');
-            console.log('Long URL:', longUrl);
+        console.log(userShortUrl);
+        request.then(function(response) {
+            appendResults(response.result.longUrl,'longUrlOutputResult');
+            console.log(response.result.longUrl);
+          }, function(reason) {
+            console.log('Error: ' + reason.result.error.message);
         });
       }
-
 
     </script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
