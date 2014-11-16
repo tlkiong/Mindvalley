@@ -1,0 +1,60 @@
+@import url(fonts/clear-sans.css);
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #faf8ef;
+  color: #776e65;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px; }
+
+body {
+  margin: 80px 0; }
+
+.container {
+  width: 500px;
+  margin: 0 auto; 
+  border: 1px solid #ccc;
+}
+
+.linkXXX{
+	background: #f4f4f4;
+	text-decoration: none;
+    color: #000;
+    width: 95%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.link2048{
+	background: #f4f4f4;
+	text-decoration: none;
+    color: #000;
+    width: 95%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.linkXXX:hover, .link2048:hover {
+    background: #ccc;
+}
+
+  @media screen and (max-width: 520px) {
+  html, body {
+    font-size: 15px; }
+
+  body {
+    margin: 20px 0;
+    padding: 0 20px; }
+
+     .container {
+    width: 280px;
+    margin: 0 auto; 
+border: 1px solid #ccc;
+}
+}
